@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: record provision date
+      shell: date > /etc/vagrant_provisioned_at
+      args:
+        executable: /bin/sh
+    # - name: Updating APT Cache and Packages
+    #   apt:
+    #     pkg:
+    #       - conda
+    #     state: present
+    #     update_cache: true
+    - name: Installing Singularity from Source
+      shell: |
+        conda install conda-build
+      args:
+        executable: /bin/sh
