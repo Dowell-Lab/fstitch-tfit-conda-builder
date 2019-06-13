@@ -1,0 +1,47 @@
+# JINJA Global Variables
+{% set name = "FStitch" %} # Make sure the capitalization stays correct on this
+{% set version = "1.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/Dowell-Lab/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 51ec937e46651ef2a4fff5f1bd93d97206ab01e9ba7755e045de2976b59b5a18
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+  # host:
+  #   - python
+  #   - pip
+  run:
+    - libgcc
+    - python
+
+# test:
+#   imports:
+#     - fstitch
+#     - fstitch.tests
+
+about:
+  home: https://github.com/Dowell-Lab/FStitch
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'Fast-processing tool written in C for the annotation of regions of active transcription'
+
+  # The remaining entries in this section are optional, but recommended.
+  description: |
+    Fast Stitch Reader (FStitch) rapidly processes read coverage files
+    into contigs of actie and inactive regions of transcription with
+    its intended being primarily for refining annotations in nascent
+    transcription data (GRO-seq, PRO-seq, NET-seq, etc.).
+  doc_url: https://github.com/Dowell-Lab/FStitch
+  dev_url: https://github.com/Dowell-Lab/FStitch
+
+extra:
+  recipe-maintainers:
+    - Dowell-Lab
+    - zmaas

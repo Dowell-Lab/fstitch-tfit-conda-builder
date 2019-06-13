@@ -5,14 +5,30 @@
       shell: date > /etc/vagrant_provisioned_at
       args:
         executable: /bin/sh
-    # - name: Updating APT Cache and Packages
-    #   apt:
-    #     pkg:
-    #       - conda
-    #     state: present
-    #     update_cache: true
-    - name: Installing Singularity from Source
+    - name: Updating APT Cache and Packages
+      apt:
+        pkg:
+          - python3
+        state: present
+        update_cache: true
+    - name: Downloading Miniconda
+      get_url:
+        url: https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        dest: /home/vagrant/
+    - name: Installing Anaconda from Source
+      become: yes
+      become_user: vagrant
       shell: |
-        conda install conda-build
+        bash /home/vagrant/Miniconda3-latest-Linux-x86_64.sh -b -p /home/vagrant/miniconda
+        rm /home/vagrant/Miniconda3-latest-Linux-x86_64.sh
+        sudo chmod -R 775 /home/vagrant/miniconda
+        echo "PATH=\$PATH:/home/vagrant/miniconda/bin" >> .bash_profile
       args:
-        executable: /bin/sh
+        executable: /bin/bash
+    - name: Installing Conda Packages
+      become: yes
+      become_user: vagrant
+      shell: |
+        /home/vagrant/miniconda/bin/conda install -y conda-build 
+      args:
+        executable: /bin/bash
