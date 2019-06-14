@@ -13,12 +13,9 @@ source:
 requirements:
   build:
     - {{ compiler('cxx') }}
-  # host:
-  #   - python
-  #   - pip
+    - make
   run:
     - libgcc
-    - python
 
 # test:
 #   imports:
