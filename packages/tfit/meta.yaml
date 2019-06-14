@@ -1,0 +1,47 @@
+# JINJA Global Variables
+{% set name = "Tfit" %} # Make sure the capitalization stays correct on this
+{% set version = "1.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/Dowell-Lab/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 8e0b7f3a56fed544ef30d84ead9a498c205aebf902bf658d08ff9782b942efc6
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - mpich
+    - make
+  run:
+    - libgcc
+    - mpich
+
+# test:
+#   imports:
+#     - fstitch
+#     - fstitch.tests
+
+about:
+  home: https://github.com/Dowell-Lab/Tfit
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A tool for modeling and annotating RNA polymerase II behavior'
+
+  # The remaining entries in this section are optional, but recommended.
+  description: |
+    Transcription fit (or Tfit) implements a finite mixture model to
+    identify signatures of RNA Polymerase II (RNAPII) activity through
+    the identification of bidirectional or divergent transcription in
+    nascent transcription assays such as Global Run-On (GRO) and
+    Precision Run-on (PRO) followed by sequencing data.
+  doc_url: https://github.com/Dowell-Lab/Tfit
+  dev_url: https://github.com/Dowell-Lab/Tfit
+
+extra:
+  recipe-maintainers:
+    - Dowell-Lab
+    - zmaas
