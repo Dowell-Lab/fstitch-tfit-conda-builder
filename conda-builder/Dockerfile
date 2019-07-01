@@ -16,6 +16,6 @@ RUN wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86
 	echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
 	echo "conda activate base" >> ~/.bashrc
 
-RUN conda install -y conda-build
+RUN conda install -y conda-build anaconda-client
 
 ENTRYPOINT [ "/bin/bash" ]

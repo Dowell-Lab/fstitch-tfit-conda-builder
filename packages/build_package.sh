@@ -2,10 +2,9 @@
 
 set -euo pipefail
 
-cd /to_build/fstitch || exit
+anaconda login --username $ANACONDA_USER --password $ANACONDA_PASSWORD
+conda config --set anaconda_upload yes
 
-conda build .
+conda build /to_build/fstitch
 
-cd /to_build/tfit || exit
-
-conda build .
+conda build /to_build/tfit

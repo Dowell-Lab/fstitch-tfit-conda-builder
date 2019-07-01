@@ -8,5 +8,6 @@ docker:
 images: docker
 	sudo docker run --rm --init \
 	-v $(shell pwd)/packages:/to_build \
+	--env-file .env \
 	--entrypoint=/to_build/build_package.sh \
 	${CONTAINER_TAG}
