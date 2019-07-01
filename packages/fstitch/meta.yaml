@@ -17,11 +17,6 @@ requirements:
   run:
     - libgcc
 
-# test:
-#   imports:
-#     - fstitch
-#     - fstitch.tests
-
 about:
   home: https://github.com/Dowell-Lab/FStitch
   license: MIT
