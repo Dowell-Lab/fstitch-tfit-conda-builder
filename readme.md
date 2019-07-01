@@ -13,7 +13,8 @@ prevents the process from completing.
 
 ## Instructions for use
 
-All you need to do is run:
+All you need to do is update $REPO_ROOT/.env with ANACONDA_USER and
+ANACONDA_PASSWORD, then run:
 
 ```
 make
