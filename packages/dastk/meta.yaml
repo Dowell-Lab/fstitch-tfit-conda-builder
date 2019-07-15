@@ -1,0 +1,66 @@
+{% set name = "DAStk" %}
+{% set version = "0.3.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "e849a5332e38b658227ee01f6a141b23e9903fae89e3e09ec75fa55122ac24c2"
+
+build:
+  number: 0
+  entry_points:
+    - process_atac=DAStk:process_atac
+    - differential_md_score=DAStk:differential_md_score
+    - barcode_plot=DAStk:barcode_plot
+    - ma_plot=DAStk:ma_plot
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - python
+    - numpy x.x
+    - pandas
+    - matplotlib
+    - pybedtools
+    - adjustText
+    - scipy
+    - scikit-learn
+    # - argparse
+    # - futures
+  run:
+    - python
+    - numpy
+    - pandas
+    - matplotlib
+    - pybedtools
+    - adjustText
+    - scipy
+    - scikit-learn
+    # - argparse
+    # - futures
+
+test:
+  imports:
+    - DAStk
+  commands:
+    - process_atac --help
+    - differential_md_score --help
+    - barcode_plot --help
+    - ma_plot --help
+
+about:
+  home: "https://github.com/Dowell-Lab/DAStk"
+  license: "BSD"
+  license_family: "BSD"
+  license_file: "LICENSE"
+  summary: "Differential ATAC-seq toolkit"
+  doc_url: "https://github.com/Dowell-Lab/DAStk"
+  dev_url: "https://github.com/Dowell-Lab/DAStk"
+
+extra:
+  recipe-maintainers:
+    - Dowell-Lab
+    - zmaas

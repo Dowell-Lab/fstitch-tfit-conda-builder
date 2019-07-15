@@ -8,3 +8,5 @@ conda config --set anaconda_upload yes
 conda build /to_build/fstitch
 
 conda build /to_build/tfit
+
+conda build -c conda-forge -c bioconda /to_build/dastk
