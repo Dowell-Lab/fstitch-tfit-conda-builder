@@ -1,6 +1,6 @@
 # JINJA Global Variables
 {% set name = "FStitch" %} # Make sure the capitalization stays correct on this
-{% set version = "1.1" %}
+{% set version = "1.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/Dowell-Lab/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 51ec937e46651ef2a4fff5f1bd93d97206ab01e9ba7755e045de2976b59b5a18
+  sha256: 3a45c8dbd6290d3bb064da24bdd28e8b8a1ba521753454df167441a3191023c1
 
 requirements:
   build:
